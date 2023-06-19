@@ -59,12 +59,12 @@ bot.help(async ctx => {
 
 bot.on('audio', async ctx => {
     try {
-        // -1001559267480
+        // -1001974175255
         const isstrm = await collection.findOne({_id: new ObjectId('64901b527a931a00216404d5')})
         if(!isstrm.is_stream) return await ctx.reply('⚠️ Зацен треков неактивен, но как только он будет активен, я сообщу вам')
         const db = await collection.findOne({user_id: ctx.from.id})
         if(db.subscribed == false) {
-            const inchanel = await ctx.tg.getChatMember(-1001974175255, ctx.from.id)
+            const inchanel = await ctx.tg.getChatMember(-1001559267480, ctx.from.id)
             if(inchanel.status == 'left') {
                 return await ctx.reply('⚠️ Для того чтобы отправить свой трек на зацен, вам нужно быть подписанным на телеграм канал <a href="https://t.me/pxtatxes">"ПОТЭЙТОС"</a>', {disable_web_page_preview: true, parse_mode: 'HTML', reply_markup: {inline_keyboard: [[Markup.button.url('Открыть канал 📢', 'https://t.me/pxtatxes')]]}})
             }else {
